@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Morco Interview Code Verification</title>
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    #qrcode {
+      margin-top: 20px;
+    }
+    #message {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Morco Interview Code Verification</h1>
+  <p>Please enter your verification code:</p>
+  <input type="text" id="codeInput" placeholder="Enter code">
+  <button onclick="validateCode()">Submit</button>
+
+  <div id="qrcode"></div>
+  <div id="message"></div>
+R
+  <script>
+    function validateCode() {
+      const input = document.getElementById("codeInput").value.toUpperCase();
+      const qrcodeDiv = document.getElementById("qrcode");
+      const messageDiv = document.getElementById("message");
+
+      // Clear QR code and message
+      qrcodeDiv.innerHTML = "";
+      messageDiv.innerHTML = "";
+
+      if (input === "ETMZ") {
+        // Generate QR code with Morse code
+        new QRCode(qrcodeDiv, {
+          text: ".... ..- .-. .-. -.-- ..- .--.", // Morse code for "HURRY UP"
+          width: 200,
+          height: 200,
+        });
+        messageDiv.innerHTML = "Verification successful! Scan the QR code to get the next clue.";
+      } else {R
+        messageDiv.innerHTML = "Verification failed! Please check your input.";
+      }
+    }
+  </script>
+</body>
+</html>R
